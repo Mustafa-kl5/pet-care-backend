@@ -1,23 +1,30 @@
-import mongoose from "mongoose";
-const { Schema, model } = mongoose;
+const mongoose = require("mongoose");
+const normalPost = require("../models/NormalPost");
+const adoptionPost = require("../models/AdoptionPost");
+const order = require("../models/Order");
 
-const blogSchema = new Schema({
-  title: String,
-  slug: String,
-  published: Boolean,
-  author: String,
-  content: String,
-  tags: [String],
-  createdAt: Date,
-  updatedAt: Date,
-  comments: [
-    {
-      user: String,
-      content: String,
-      votes: Number,
-    },
-  ],
+const userSchema = new mongoose.Schema({
+  userID: {
+    type: mongoose.Schema.ObjectId,
+    default: () => new mongoose.Types.ObjectId(),
+  },
+  firstName: { type: String },
+  lastName: { type: String },
+  birthDay: { type: String },
+  City: { type: String },
+  address: { type: String },
+  userImage: { type: String },
+  phoneNumber: { type: String },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  normalPosts: [normalPost],
+  adoptionPosts: [adoptionPost],
+  bio: { type: String },
+  userOrder: { type: order },
+  favouritePosts: [normalPost],
+  favouriteAdoptionPosts: [adoptionPost],
 });
 
-const Blog = model("Blog", blogSchema);
-export default Blog;
+const user = mongoose.model("user", userSchema);
+
+module.exports = user;

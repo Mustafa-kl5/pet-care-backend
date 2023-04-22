@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
-const main = require("./db");
+const run = require("./db");
 
-main.main().catch(console.error);
+run.main().catch(console.error);
 
 app.use("/", require("./routes/login"));
 const PORT = process.env.PORT || 4111;
