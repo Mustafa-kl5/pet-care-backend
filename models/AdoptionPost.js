@@ -23,6 +23,4 @@ const adoptionPostSchema = new mongoose.Schema({
   status: { type: Boolean, required: true },
 });
 
-const AdoptionPost = mongoose.model("adoptionPost", adoptionPostSchema);
-
-module.exports = AdoptionPost;
+module.exports = adoptionPostSchema;

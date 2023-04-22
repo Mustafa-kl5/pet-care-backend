@@ -4,6 +4,4 @@ const locationSchema = new mongoose.Schema({
   latitude: { type: String, required: true },
 });
 
-const location = mongoose.model("location", locationSchema);
-
-module.exports = location;
+module.exports = locationSchema;

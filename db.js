@@ -1,20 +1,15 @@
-const { MongoClient } = require("mongodb");
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 const database = process.env.MONGOLAB_URI;
 async function main() {
-  const client = new MongoClient(database);
-
-  try {
-    // Connect to the MongoDB cluster
-    await client.connect();
-    console.log("connect to database");
-    // Make the appropriate DB calls
-  } catch (e) {
-    console.error(e);
-  } finally {
-    await client.close();
-  }
+  mongoose
+    .connect(database, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => console.log("MongoDB connected"))
+    .catch((err) => console.log(err));
 }
 
 module.exports = { main };

@@ -4,10 +4,6 @@ const adoptionPost = require("./AdoptionPost");
 const order = require("./Order");
 
 const userSchema = new mongoose.Schema({
-  userID: {
-    type: mongoose.Schema.ObjectId,
-    default: () => new mongoose.Types.ObjectId(),
-  },
   firstName: { type: String },
   lastName: { type: String },
   birthDay: { type: String },
@@ -25,6 +21,4 @@ const userSchema = new mongoose.Schema({
   favouriteAdoptionPosts: [adoptionPost],
 });
 
-const user = mongoose.model("user", userSchema);
-
-module.exports = user;
+module.exports = mongoose.model("user", userSchema);

@@ -7,5 +7,5 @@ const postComment = new mongoose.Schema({
   },
   commentDescription: { type: String },
 });
-const postsComment = mongoose.model("postComment", postComment);
-module.exports = postsComment;
+
+module.exports = postComment;

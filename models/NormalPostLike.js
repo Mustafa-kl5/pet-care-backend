@@ -6,6 +6,5 @@ const postLike = new mongoose.Schema({
     default: new Date(),
   },
 });
-const postsLike = mongoose.model("postLike", postLike);
 
-module.exports = postsLike;
+module.exports = postLike;

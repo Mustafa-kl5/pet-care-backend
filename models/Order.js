@@ -8,6 +8,5 @@ const orderSchema = new mongoose.Schema({
   cvcCode: { type: String },
   cardHolderName: { type: String },
 });
-const order = mongoose.model("order", orderSchema);
 
-module.exports = order;
+module.exports = orderSchema;

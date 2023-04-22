@@ -5,6 +5,4 @@ const socialMediaSchema = new mongoose.Schema({
   whatsappLink: { type: String },
 });
 
-const socialMedia = mongoose.model("socialMedia", socialMediaSchema);
-
-module.exports = socialMedia;
+module.exports = socialMediaSchema;
