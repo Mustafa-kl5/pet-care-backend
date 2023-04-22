@@ -1,4 +1,3 @@
-module.exports = postsComment;
 const mongoose = require("mongoose");
 const postLike = new mongoose.Schema({
   likeOwner: { type: String, required: true },

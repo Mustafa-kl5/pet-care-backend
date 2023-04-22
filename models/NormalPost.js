@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const postImages = require("../models/image");
-const postLike = require("../models/NormalPostLike");
-const postComment = require("../models/NormalPostComment");
+const postImages = require("./image");
+const postLike = require("./NormalPostLike");
+const postComment = require("./NormalPostComment");
 const postSchema = new mongoose.Schema({
   postID: {
     type: mongoose.Schema.ObjectId,

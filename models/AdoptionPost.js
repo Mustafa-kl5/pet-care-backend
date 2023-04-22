@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const postImages = require("../models/image");
-const location = require("../models/Location");
-const socialMedia = require("../models/SocialMedia");
+const postImages = require("./image");
+const location = require("./Location");
+const socialMedia = require("./SocialMedia");
 
 const adoptionPostSchema = new mongoose.Schema({
   postID: {

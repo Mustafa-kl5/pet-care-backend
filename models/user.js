@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const normalPost = require("../models/NormalPost");
-const adoptionPost = require("../models/AdoptionPost");
-const order = require("../models/Order");
+const normalPost = require("./NormalPost");
+const adoptionPost = require("./AdoptionPost");
+const order = require("./Order");
 
 const userSchema = new mongoose.Schema({
   userID: {
