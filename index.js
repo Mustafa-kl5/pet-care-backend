@@ -1,9 +1,15 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const run = require("./db");
 const loginRoute = require("./routes/login");
 const registrationRoute = require("./routes/registration");
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 
 run.main().catch(console.error);
 app.use(bodyParser.urlencoded({ extended: true }));
