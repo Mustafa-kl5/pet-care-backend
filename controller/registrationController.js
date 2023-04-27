@@ -37,7 +37,7 @@ const registrationController = async (req, res) => {
   });
   try {
     const savedUser = await user.save();
-    res.status(201).send({ message: "100% sjalt ya kbyr " });
+    res.status(201).send({ message: "100% " });
   } catch (error) {
     res.status(400).send({ message: error.message });
   }
