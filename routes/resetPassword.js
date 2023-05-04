@@ -1,0 +1,11 @@
+const express = require("express");
+const router = express.Router();
+const VerifyEmailController = require("../controller/ResetPassword/VerifyEmail");
+const VerifyOTP = require("../controller/ResetPassword/verifyOTP");
+const ResetPassword = require("../controller/ResetPassword/Resetpassword");
+const ReSendOTPCode = require("../controller/ResetPassword/ReSendOTPCode");
+router.post("/reset", VerifyEmailController);
+router.post("/verifyOTP", VerifyOTP);
+router.post("/ResetPassword", ResetPassword);
+router.post("/ResendOTP", ReSendOTPCode);
+module.exports = router;

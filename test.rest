@@ -1,0 +1,6 @@
+post http://localhost:4111/auth/reset
+Content-Type: application/json
+
+{
+ "email":"mustafaa@gmail.com",
+} 
