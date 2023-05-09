@@ -6,7 +6,7 @@ const transporter = nodemailer.createTransport(
   sendgrid({
     auth: {
       api_key:
-        "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",
+        "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",
     },
   })
 );
@@ -25,7 +25,7 @@ const SendOTPCode = async ({ id, email }, res) => {
     console.log(newUserOTP);
     await newUserOTP.save();
     await transporter.sendMail({
-      from: "subaruk898@gmail.com",
+      from: "armousa19@cit.just.edu.jo",
       to: email,
       subject: "Your OTP code is :",
       html: `<p>Your OTP Code For Today is <b style="color:red;">${otp}</b></p>`,
