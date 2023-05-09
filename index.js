@@ -6,6 +6,7 @@ const run = require("./db");
 const loginRoute = require("./routes/login");
 const registrationRoute = require("./routes/registration");
 const ResetPassword = require("./routes/resetPassword");
+const postsRoutes = require("./routes/PostsRouts");
 
 app.use(
   cors({
@@ -15,9 +16,11 @@ app.use(
 
 run.main().catch(console.error);
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use("/Images", express.static("Images"));
 app.use("/auth", loginRoute);
 app.use("/auth", registrationRoute);
 app.use("/auth", ResetPassword);
+app.use("/", postsRoutes);
 const PORT = process.env.PORT || 4111;
 app.listen(PORT, console.log("Server don start for port: " + PORT));
