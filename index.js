@@ -6,7 +6,7 @@ const run = require("./db");
 const loginRoute = require("./routes/login");
 const registrationRoute = require("./routes/registration");
 const ResetPassword = require("./routes/resetPassword");
-
+const getblog = require("./routes/getInformationBlog.js");
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -15,9 +15,10 @@ app.use(
 
 run.main().catch(console.error);
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb" }));
 app.use("/auth", loginRoute);
 app.use("/auth", registrationRoute);
 app.use("/auth", ResetPassword);
+app.use("/admin", getblog);
 const PORT = process.env.PORT || 4111;
 app.listen(PORT, console.log("Server don start for port: " + PORT));
