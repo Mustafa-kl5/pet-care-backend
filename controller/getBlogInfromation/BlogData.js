@@ -1,20 +1,30 @@
+const uploadImage = require("../../imageServise/ImageUpload");
 const InformationAndTreatment = require("../../models/InformationAndTreatment");
+const location = require("../../models/Location");
+const mongoose = require("mongoose");
+const locationModel = mongoose.model("location", location);
+
 const GetBlogData = async (req, res) => {
   try {
     const blogInformation = req.body;
+    const image = await uploadImage(blogInformation.Images);
     console.log(blogInformation);
     const blog = await new InformationAndTreatment({
       animalType: blogInformation.AnimalType,
       animalBreed: blogInformation.AnimalBreed,
       information: blogInformation.Description,
-      longitude: blogInformation.longitude,
-      latitude: blogInformation.latitude,
-      images: blogInformation.Images,
+      clinicLocation: new locationModel({
+        longitude: blogInformation.location.lat,
+        latitude: blogInformation.location.long,
+      }),
+
+      images: image,
     });
     await blog.save();
-    res.json({
-      state: "ok",
-    });
+    res.send(blog);
+    // res.json({
+    //   state: "ok",
+    // });
   } catch (error) {
     console.log(error);
     res.json({
