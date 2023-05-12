@@ -7,7 +7,7 @@ const addLikeToPost = async (req, res) => {
   try {
     const idFromUrl = req.params.id;
     const postId = idFromUrl.replace(/:/g, "");
-    const post = await postModle.findById(postId).exec();
+    const post = await postModle.findById(postId, "postLikes").exec();
 
     const like = new likeModle({
       likeOwner: userId,

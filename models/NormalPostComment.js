@@ -5,7 +5,8 @@ const postComment = new mongoose.Schema({
     type: Date,
     default: new Date(),
   },
-  commentDescription: { type: String },
+  commentDescription: { type: String, required: true },
+  _id: false,
 });
 
 module.exports = postComment;

@@ -7,7 +7,7 @@ const authenticate = (req, res, next) => {
 
   if (!token) {
     // Return 401 Unauthorized if token is missing
-    return res.status(401).json({ error: "Unauthorizeddsfsdfds" });
+    return res.status(401).json({ error: "Uno tokent in header" });
   }
 
   try {
@@ -22,7 +22,7 @@ const authenticate = (req, res, next) => {
     next();
   } catch (error) {
     // Return 401 Unauthorized if token is invalid or expired
-    res.status(401).json({ error: "Unauthorizedddddd" });
+    res.status(401).json({ error: "the token is unvalid " });
   }
 };
 

@@ -11,7 +11,6 @@ const addPost = async (req, res) => {
   try {
     const user = await User.findById(userId, "firstName lastName _id");
     const postImage = await uploadImage(images);
-
     const post = new postModle({
       postType: postType,
       description: postDescription,
