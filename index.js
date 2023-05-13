@@ -7,11 +7,11 @@ const loginRoute = require("./routes/login");
 const registrationRoute = require("./routes/registration");
 const ResetPassword = require("./routes/resetPassword");
 const postsRoutes = require("./routes/PostsRouts");
-
+const sendInformation = require("./routes/sendInformationblog");
 const getblog = require("./routes/getInformationBlog.js");
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "http://localhost:3001"],
   })
 );
 
@@ -27,5 +27,6 @@ app.use("/auth", loginRoute);
 app.use("/auth", registrationRoute);
 app.use("/auth", ResetPassword);
 app.use("/admin", getblog);
+app.use("/InformationPage", sendInformation);
 const PORT = process.env.PORT || 4111;
 app.listen(PORT, console.log("Server don start for port: " + PORT));

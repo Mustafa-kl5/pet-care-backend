@@ -6,25 +6,27 @@ const locationModel = mongoose.model("location", location);
 
 const GetBlogData = async (req, res) => {
   try {
-    const blogInformation = req.body;
+    const { blogInformation } = req.body;
+
     const image = await uploadImage(blogInformation.Images);
+
     console.log(blogInformation);
     const blog = await new InformationAndTreatment({
       animalType: blogInformation.AnimalType,
       animalBreed: blogInformation.AnimalBreed,
       information: blogInformation.Description,
       clinicLocation: new locationModel({
-        longitude: blogInformation.location.lat,
-        latitude: blogInformation.location.long,
+        longitude: blogInformation.Longitude,
+        latitude: blogInformation.Latitude,
       }),
 
       images: image,
     });
     await blog.save();
-    res.send(blog);
-    // res.json({
-    //   state: "ok",
-    // });
+
+    res.json({
+      state: "ok",
+    });
   } catch (error) {
     console.log(error);
     res.json({
