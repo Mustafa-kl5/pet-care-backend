@@ -22,7 +22,7 @@ const authenticate = (req, res, next) => {
     next();
   } catch (error) {
     // Return 401 Unauthorized if token is invalid or expired
-    res.status(401).json({ error: "Unauthorizedddddd" });
+    res.status(401).json({ error: "Unauthorized" });
   }
 };
 
