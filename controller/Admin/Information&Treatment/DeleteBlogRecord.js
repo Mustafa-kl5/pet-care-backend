@@ -1,4 +1,4 @@
-const InformationAndTreatment = require("../../models/InformationAndTreatment");
+const InformationAndTreatment = require("../../../models/InformationAndTreatment");
 const DeleteBlogRecord = async (req, res) => {
   try {
     const { id } = req.body;

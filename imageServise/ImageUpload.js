@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const imageSchema = require("../models/image");
 const imageModel = mongoose.model("images", imageSchema);
 
-const uploadImage = async (images) => {
+const uploadImage = async (images, Catagory) => {
   const Images = [];
 
   for (const image of images) {
@@ -12,7 +12,7 @@ const uploadImage = async (images) => {
     const filename = `image${
       Math.floor(Math.random() * 900000) + 100000
     }.${imageType}`;
-    const filepath = `Images/${filename}`;
+    const filepath = `Images/${Catagory}/${filename}`;
     const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
 
     try {
