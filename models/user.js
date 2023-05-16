@@ -17,12 +17,10 @@ const userSchema = new mongoose.Schema({
   phoneNumber: { type: String },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  // normalPosts: [normalPost],
-  adoptionPosts: [adoptionPost],
   bio: { type: String },
   userOrder: { type: order },
   // favouritePosts: [normalPost],
-  favouriteAdoptionPosts: [adoptionPost],
+  favouriteAdoptionPosts: [String],
 });
 
 module.exports = mongoose.model("user", userSchema);

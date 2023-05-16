@@ -8,6 +8,7 @@ const registrationRoute = require("./routes/registration");
 const ResetPassword = require("./routes/resetPassword");
 const postsRoutes = require("./routes/PostsRouts");
 const userInformation = require("./routes/UserIformation");
+const adoptionPostsRoutes = require("./routes/AdoptionRouts");
 
 app.use(
   cors({
@@ -23,6 +24,7 @@ app.use("/auth", loginRoute);
 app.use("/auth", registrationRoute);
 app.use("/auth", ResetPassword);
 app.use("/", postsRoutes);
+app.use("/", adoptionPostsRoutes);
 app.use("/", userInformation);
 const PORT = process.env.PORT || 4111;
 app.listen(PORT, console.log("Server don start for port: " + PORT));

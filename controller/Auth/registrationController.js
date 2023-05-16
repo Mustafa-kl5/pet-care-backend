@@ -31,7 +31,7 @@ const registrationController = async (req, res) => {
     email,
     phoneNumber,
     password: hashedPassword,
-    city,
+    City: city,
     address,
     birthDay: `${monthOfBirth}/${dayOfBirth}/${yearOfBirth}`,
   });
