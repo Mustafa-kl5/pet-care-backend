@@ -7,5 +7,5 @@ const ProductsSchema = new mongoose.Schema({
   productPrice: { type: String, required: true },
   productImages: [image],
 });
-const Products = mongoose.model("Products", ProductsSchema);
-module.exports = Products;
+
+module.exports = ProductsSchema;

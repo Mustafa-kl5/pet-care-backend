@@ -7,7 +7,7 @@ const authenticate = (req, res, next) => {
 
   if (!token) {
     // Return 401 Unauthorized if token is missing
-    return res.status(401).json({ error: "Unauthorizeddsfsdfds" });
+    return res.status(401).json({ message: "Unauthorized" });
   }
 
   try {

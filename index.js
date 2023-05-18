@@ -11,6 +11,7 @@ const sendInformation = require("./routes/sendInformationblog");
 const InformationAdminPage = require("./routes/Admin/getInformationBlog");
 const adminlogin = require("./routes/Admin/Adminlogin");
 const StorePage = require("./routes/Admin/Store.js");
+const sendProduct = require("./routes/FetchStoreData/sendProducts.js");
 app.use(
   cors({
     origin: ["http://localhost:3000", "http://localhost:3001"],
@@ -32,5 +33,6 @@ app.use("/admin", InformationAdminPage);
 app.use("/admin", adminlogin);
 app.use("/admin", StorePage);
 app.use("/InformationPage", sendInformation);
+app.use("/StorePage", sendProduct);
 const PORT = process.env.PORT || 4111;
 app.listen(PORT, console.log("Server don start for port: " + PORT));
