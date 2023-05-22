@@ -8,7 +8,7 @@ const addComment = async (req, res) => {
   const { userId } = req.user;
   const { comment } = req.body;
   try {
-    const post = await postModle.findById(postId, "postcomments").exec();
+    const post = await postModle.findById(postId, "postcomments");
     const postComment = new commentModle({
       commentOwner: userId,
       commentDescription: comment,

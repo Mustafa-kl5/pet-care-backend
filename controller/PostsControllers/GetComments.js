@@ -5,18 +5,27 @@ const getComments = async (req, res) => {
   const idFromUrl = req.params.id;
   const postId = idFromUrl.replace(/:/g, "");
   try {
-    const post = await postModle.findById(postId, "postcomments author");
-    const user = await User.findById(
-      post.author,
-      "userImage firstName lastName"
-    );
-    res.status(201).json({
-      postComments: post.postcomments,
-      commentOwnerImage: user.userImage,
-      commentOwnerName: `${user.firstName + " " + user.lastName}`,
+    const post = await postModle.findById(postId, "postcomments");
+
+    const commentPromises = post.postcomments.map(async (item) => {
+      const user = await User.findById(
+        item.commentOwner,
+        "userImage firstName lastName"
+      );
+
+      return {
+        commentOwner: `${user.firstName} ${user.lastName}`,
+        ownerImage: user.userImage,
+        commentDescription: item.commentDescription,
+        commentTime: item.commentTime,
+      };
     });
+
+    const comments = await Promise.all(commentPromises);
+    res.status(200).send(comments);
   } catch (error) {
-    res.status(401).json({ massage: "failed to get post" });
+    res.status(401).json({ message: "failed to get post" });
   }
 };
+
 module.exports = getComments;

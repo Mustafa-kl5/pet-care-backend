@@ -15,7 +15,7 @@ const postSchema = new mongoose.Schema({
   postLikes: [postLike],
   postTime: {
     type: Date,
-    default: new Date(),
+    default: Date.now,
   },
 });
 const postModle = mongoose.model("post", postSchema);

@@ -9,6 +9,7 @@ const ResetPassword = require("./routes/resetPassword");
 const postsRoutes = require("./routes/PostsRouts");
 const userInformation = require("./routes/UserIformation");
 const adoptionPostsRoutes = require("./routes/AdoptionRouts");
+const managementRoutes = require("./routes/ManagmentRouts");
 
 app.use(
   cors({
@@ -26,5 +27,6 @@ app.use("/auth", ResetPassword);
 app.use("/", postsRoutes);
 app.use("/", adoptionPostsRoutes);
 app.use("/", userInformation);
+app.use("/", managementRoutes);
 const PORT = process.env.PORT || 4111;
 app.listen(PORT, console.log("Server don start for port: " + PORT));

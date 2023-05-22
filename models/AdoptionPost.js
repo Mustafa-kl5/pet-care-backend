@@ -7,7 +7,7 @@ const adoptionPostSchema = new mongoose.Schema({
   Images: [postImages],
   postTime: {
     type: Date,
-    default: new Date(),
+    default: Date.now,
   },
   description: { type: String, required: true },
   postOwner: { type: String, required: true },
