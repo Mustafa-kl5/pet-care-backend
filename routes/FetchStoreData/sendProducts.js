@@ -4,5 +4,6 @@ const fetchProducts = require("../../controller/fetchStoreData/fetchProductData"
 const fetchSelectedProducts = require("../../controller/fetchStoreData/fetchSelectedProducts");
 const route = express.Router();
 route.get("/sendProducts", fetchProducts);
-route.post("/sendSelectedProducts", fetchSelectedProducts);
+route.post("/sendSelectedProducts", authenticate, fetchSelectedProducts);
+
 module.exports = route;
