@@ -7,10 +7,7 @@ const locationModel = mongoose.model("location", location);
 const GetBlogData = async (req, res) => {
   try {
     const { blogInformation } = req.body;
-
     const image = await uploadImage(blogInformation.Images, "BlogsImages");
-
-    console.log(blogInformation);
     const blog = await new InformationAndTreatment({
       animalType: blogInformation.AnimalType,
       animalBreed: blogInformation.AnimalBreed,

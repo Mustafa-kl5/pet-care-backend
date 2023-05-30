@@ -7,6 +7,7 @@ const orderSchema = new mongoose.Schema({
   cvcCode: { type: String },
   cardHolderName: { type: String },
   totalPrice: { type: Number },
+  orderState: { type: String },
 });
 
 module.exports = orderSchema;

@@ -1,11 +1,16 @@
 const InformationandTreatmentSchema = require("../../models/InformationAndTreatment");
+const mongoose = require("mongoose");
+const Type = require("../../models/AnimalType");
+const typeModel = mongoose.model("Type", Type);
 const BreedHandler = async (req, res) => {
   try {
-    const { type } = req.body;
-    const InformationData = await InformationandTreatmentSchema.find({
+    const { type, typeID } = req.body;
+    const animalType = await typeModel.findOne({ _id: typeID });
+    const informationBlog = await InformationandTreatmentSchema.find({
       animalType: type,
     });
-    res.json(InformationData);
+
+    res.json({ animalType, informationBlog });
   } catch (error) {
     console.log(error);
     res.send(error);

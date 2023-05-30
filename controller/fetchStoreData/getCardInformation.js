@@ -15,6 +15,7 @@ const getCardInformation = async (req, res) => {
       order.cvcCode = CardInfo.cardCvc;
       order.expirationDate = CardInfo.cardExpiry;
       order.totalPrice = CardInfo.totalPrice;
+      order.orderState = "Confirmed ";
       order.save();
       user.userOrder = order;
       user.save();
