@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 const authenticate = (req, res, next) => {
   // Get token from request headers
   const token = req.headers.authorization?.split(" ")[1];
-
   if (!token) {
     // Return 401 Unauthorized if token is missing
     return res.status(401).json({ message: "Unauthorized" });
@@ -22,7 +21,7 @@ const authenticate = (req, res, next) => {
     next();
   } catch (error) {
     // Return 401 Unauthorized if token is invalid or expired
-    res.status(401).json({ error: "Unauthorized" });
+    res.status(401).json({ error: "Somthing went wrong" });
   }
 };
 

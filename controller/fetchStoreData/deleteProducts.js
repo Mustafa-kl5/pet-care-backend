@@ -8,14 +8,20 @@ const ProductModel = mongoose.model("Product", Product);
 const deletProducts = async (req, res) => {
   try {
     const { OrderId, ProductId, userID } = req.body;
-    const order = await OrderModel.findById({ _id: OrderId });
-    const product = await ProductModel.findById({ _id: ProductId });
+    const order = await OrderModel.findById(OrderId);
+    const product = await ProductModel.findById(ProductId);
     const user = await User.findById(userID);
-    order.products.pop(product);
-    order.save();
+    const productIndex = order.products.findIndex(
+      (p) => String(p._id) === String(ProductId)
+    );
+    if (productIndex !== -1) {
+      order.products.splice(productIndex, 1);
+      await order.save();
+    }
+    await order.save();
     user.userOrder = order;
-    user.save();
-    res.json({ order, product, user: user });
+    await user.save();
+    res.json({ order, product, user });
   } catch (error) {
     res.json({ message: "error" });
   }
