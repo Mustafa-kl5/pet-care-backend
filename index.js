@@ -14,6 +14,7 @@ const StorePage = require("./routes/Admin/Store.js");
 const sendProduct = require("./routes/FetchStoreData/sendProducts.js");
 const fetchProdcutsToPasket = require("./routes/FetchStoreData/PasketRoute.js");
 const ProfileRoute = require("./routes/ProfileRoute");
+const webHookRoute = require("./routes/FetchStoreData/webhookRoute");
 app.use(
   cors({
     origin: ["http://localhost:3000", "http://localhost:3001"],
@@ -22,6 +23,7 @@ app.use(
 
 run.main().catch(console.error);
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/Order", bodyParser.raw({ type: "*/*" }), webHookRoute);
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use("/Images", express.static("Images"));
 app.use("/auth", loginRoute);

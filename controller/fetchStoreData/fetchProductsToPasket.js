@@ -3,7 +3,8 @@ const fetchProdcutsToPasket = async (req, res) => {
   try {
     let userId = req.user.userId;
     const user = await User.findById(userId);
-    res.json({ Order: user.userOrder, userID: userId });
+    const userOrder = user.userOrder.filter((order) => order.orderState === "");
+    res.json({ Order: userOrder[0], userID: userId });
   } catch (error) {
     res.json({ message: "Somthing Wrong!" });
   }

@@ -12,20 +12,21 @@ const fetchSelectedProducts = async (req, res) => {
     const product = await ProductModel.findById(ProductID);
     product.productQuntity = ProductQuintity;
     product.save();
-    if (!user.userOrder) {
-      const order = new OrderModel();
-      order.products.push(product);
-      order.cvcCode = "";
-      order.cardHolderName = "";
-      order.cardNumber = "";
-      order.expirationDate = "";
-      order.totalPrice = "";
-      await order.save();
-      user.userOrder = order;
+    if (
+      !user.userOrder ||
+      !user.userOrder.length ||
+      user.userOrder[user.userOrder.length - 1].orderState !== ""
+    ) {
+      const newOrder = new OrderModel();
+      newOrder.products.push(product);
+      newOrder.totalPrice = "";
+      await newOrder.save();
+      user.userOrder.push(newOrder);
       await user.save();
       res.json({ message: "A Product has been added to your Cart!" });
     } else {
-      const order = await OrderModel.findById(user.userOrder);
+      const orderId = user.userOrder[user.userOrder.length - 1];
+      const order = await OrderModel.findById(orderId);
       if (!order) {
         res.status(404).json({ message: "Order not found" });
       } else {
@@ -41,13 +42,14 @@ const fetchSelectedProducts = async (req, res) => {
         } else {
           order.products.push(product);
           await order.save();
-          user.userOrder = order;
+          user.userOrder[user.userOrder.length - 1] = order;
           await user.save();
           res.json({ message: "A Product has been added to your Cart!" });
         }
       }
     }
   } catch (error) {
+    console.log(error.message);
     res.json({ message: "Somthing Went Wrong , Please Try Again" });
   }
 };

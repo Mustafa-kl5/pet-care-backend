@@ -1,3 +1,4 @@
+const { Int32 } = require("mongodb");
 const mongoose = require("mongoose");
 const image = require("../models/image");
 const ProductsSchema = new mongoose.Schema({
@@ -5,7 +6,7 @@ const ProductsSchema = new mongoose.Schema({
   productName: { type: String, required: true },
   productType: { type: String, required: true },
   productPrice: { type: String, required: true },
-  productQuntity: { type: String, require: false },
+  productQuntity: { type: Number, require: true },
   productImages: [image],
 });
 

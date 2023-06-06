@@ -19,11 +19,10 @@ const userSchema = new mongoose.Schema({
   // normalPosts: [normalPost],
   adoptionPosts: [adoptionPost],
   bio: { type: String },
-  userOrder: {
-    type: Order,
-  },
+  userOrder: [Order],
   // favouritePosts: [normalPost],
   favouriteAdoptionPosts: [adoptionPost],
+  BankAccount: { type: Number, default: 2000 },
 });
 
 module.exports = mongoose.model("user", userSchema);
