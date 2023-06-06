@@ -6,7 +6,7 @@ const upLoadSingleImage = async (image, userName) => {
   const filename = `image${
     Math.floor(Math.random() * 900000) + 100000 + userName
   }.${imageType}`;
-  const filepath = `Images/${filename}`;
+  const filepath = `Images/userImage/${filename}`;
   const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
 
   try {

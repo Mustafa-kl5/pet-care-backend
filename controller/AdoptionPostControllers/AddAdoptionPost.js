@@ -31,7 +31,7 @@ const addAdoptionPost = async (req, res) => {
       whatsappLink: WhatsappNumber,
       phoneNumber: phoneNumber,
     });
-    const postImage = await uploadImage(images);
+    const postImage = await uploadImage(images, "AdoptionPostImages");
     const post = new postModle({
       animalBreed: animalBreed,
       animalType: animalType,

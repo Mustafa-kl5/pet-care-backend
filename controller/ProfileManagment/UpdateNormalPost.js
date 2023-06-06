@@ -8,7 +8,7 @@ const updateNormalPost = async (req, res) => {
   try {
     const post = await postModel.findById(postID, "author");
     if (post.author._id.toString() === userId) {
-      const newImage = await uploadImage(images);
+      const newImage = await uploadImage(images, "NormalPostImages");
       post.Images = newImage;
       post.postType = postType;
       post.description = postDescription;

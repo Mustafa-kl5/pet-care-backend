@@ -10,7 +10,7 @@ const addPost = async (req, res) => {
   const { postDescription, postType, images } = req.body;
   try {
     const user = await User.findById(userId, "firstName lastName _id");
-    const postImage = await uploadImage(images);
+    const postImage = await uploadImage(images, "NormalPostImages");
     const post = new postModle({
       postType: postType,
       description: postDescription,
