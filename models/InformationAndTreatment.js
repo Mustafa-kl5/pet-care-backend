@@ -1,11 +1,10 @@
 const mongoose = require("mongoose");
 const location = require("./Location");
 const image = require("./image");
-
 const informationAndTreatmentSchema = new mongoose.Schema({
-  animalType: { type: String, required: true },
-  animalBreed: { type: String, required: true },
-  information: { type: String, required: true },
+  animalType: { type: String },
+  animalBreed: { type: String },
+  information: { type: String },
   clinicLocation: { type: location },
   images: [image],
 });

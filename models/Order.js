@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
-const product = require("./Product");
-
+const ProductsSchema = require("./Products");
 const orderSchema = new mongoose.Schema({
-  products: [product],
+  products: [ProductsSchema],
   cardNumber: { type: String },
-  expirationDate: { type: Date },
+  expirationDate: { type: String },
   cvcCode: { type: String },
   cardHolderName: { type: String },
+  totalPrice: { type: Number },
+  orderState: { type: String, default: "" },
 });
 
 module.exports = orderSchema;

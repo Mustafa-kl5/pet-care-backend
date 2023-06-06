@@ -4,7 +4,7 @@ const ReSendOTPCode = async (req, res) => {
   try {
     let { userID, email } = req.body;
     if (!userID || !email) {
-      throw Error("userID or email is required");
+      res.json({ message: "Wrong Email , Please TryAgain" });
     } else {
       result = { id: userID, email: email };
       await UserOTP.deleteMany({ userID });
@@ -12,8 +12,7 @@ const ReSendOTPCode = async (req, res) => {
     }
   } catch (error) {
     res.json({
-      state: "failed",
-      message: error.message,
+      message: "Somthing Went Wrong ,Please Try Again",
     });
     console.log(error);
   }
