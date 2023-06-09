@@ -10,7 +10,6 @@ const postsRoutes = require("./routes/PostsRouts");
 const userInformation = require("./routes/UserIformation");
 const adoptionPostsRoutes = require("./routes/AdoptionRouts");
 const managementRoutes = require("./routes/ManagmentRouts");
-
 const sendInformation = require("./routes/sendInformationblog");
 const InformationAdminPage = require("./routes/Admin/getInformationBlog");
 const adminlogin = require("./routes/Admin/Adminlogin");

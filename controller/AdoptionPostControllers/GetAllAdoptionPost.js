@@ -35,7 +35,7 @@ const getAllAdoptionPost = async (req, res) => {
 
     res.status(201).send(posts);
   } catch (error) {
-    res.status(401).send("Error to add post");
+    res.status(401).send("Error to get posts");
   }
 };
 module.exports = getAllAdoptionPost;
