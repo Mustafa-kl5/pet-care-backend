@@ -5,7 +5,6 @@ const DeleteProductRecord = async (req, res) => {
   try {
     const { productId } = req.body;
     const product = await ProductModel.deleteOne({ _id: productId });
-    product.save();
     res.json({ message: "Done!" });
   } catch (error) {
     console.log(error);

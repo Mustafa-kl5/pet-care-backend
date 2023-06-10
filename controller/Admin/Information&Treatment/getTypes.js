@@ -5,9 +5,7 @@ const getTypes = async (req, res) => {
   const typeModels = modelNames
     .filter((modelName) => modelName.includes("Type"))
     .map((modelName) => mongoose.model(modelName));
-
   const allModelsData = [];
-
   for (const model of typeModels) {
     const documents = await model.find();
     allModelsData.push(documents);

@@ -4,13 +4,13 @@ const Order = require("../../../models/Order");
 const OrderModel = mongoose.model("Order", Order);
 const setOrderState = async (req, res) => {
   try {
-    const { userID, OrderID, OrderState } = req.body;
-    const user = await User.findById(userID);
-    const UpdatedOrder = await OrderModel.findById(OrderID);
-    UpdatedOrder.orderState = OrderState;
-    UpdatedOrder.save();
-    user.userOrder = UpdatedOrder;
-    user.save();
+    const {OrderState,OrderID } = req.body;
+    const Order = await OrderModel.findById(OrderID);
+    Order.orderState=OrderState;
+    Order.save ();
+    const user = await User.findOneAndUpdate(
+      { userOrder: { $elemMatch: { _id: OrderID } } },
+      { $set: { "userOrder.$.orderState": OrderState } });
     res.json({ message: "State has been changed" });
   } catch (error) {
     console.log(error);
