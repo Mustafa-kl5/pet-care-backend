@@ -1,13 +1,7 @@
 const mongoose = require("mongoose");
-const ProductsSchema = require("./Products");
 const orderSchema = new mongoose.Schema({
-  products: [ProductsSchema],
-  cardNumber: { type: String },
-  expirationDate: { type: String },
-  cvcCode: { type: String },
-  cardHolderName: { type: String },
+  products: [{ ProductQuantity: Number, ProductId: String }],
   totalPrice: { type: Number },
-  orderState: { type: String, default: "" },
+  orderState: { type: String, default: "Pending" },
 });
-
 module.exports = orderSchema;

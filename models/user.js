@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const normalPost = require("./NormalPost");
-const adoptionPost = require("./AdoptionPost");
 const Order = require("./Order");
 const userSchema = new mongoose.Schema({
   firstName: { type: String },
@@ -17,10 +15,9 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   bio: { type: String },
-  userOrder: [Order],
+  userOrder: Order,
   // favouritePosts: [normalPost],
   favouriteAdoptionPosts: [String],
-  BankAccount: { type: Number, default: 2000 },
 });
 
 module.exports = mongoose.model("user", userSchema);
