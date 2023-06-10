@@ -16,7 +16,6 @@ const adminlogin = require("./routes/Admin/Adminlogin");
 const StorePage = require("./routes/Admin/Store.js");
 const sendProduct = require("./routes/FetchStoreData/sendProducts.js");
 const fetchProdcutsToPasket = require("./routes/FetchStoreData/PasketRoute.js");
-const ProfileRoute = require("./routes/ProfileRoute");
 const webHookRoute = require("./routes/FetchStoreData/webhookRoute");
 app.use(
   cors({
@@ -45,6 +44,5 @@ app.use("/admin", StorePage);
 app.use("/InformationPage", sendInformation);
 app.use("/StorePage", sendProduct);
 app.use("/OrderPage", fetchProdcutsToPasket);
-app.use("/ProfilePage", ProfileRoute);
 const PORT = process.env.PORT || 4111;
 app.listen(PORT, console.log("Server don start for port: " + PORT));

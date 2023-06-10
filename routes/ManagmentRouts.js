@@ -9,8 +9,8 @@ const getAdoptionPost = require("../controller/ProfileManagment/GetAdoptionPost"
 const deleteAdoptionPost = require("../controller/ProfileManagment/DeleteAdoptionPost");
 const changeAdoptionPostStatus = require("../controller/ProfileManagment/ChangeAdoptionPostStatus");
 const getFavouriteAdoptionPost = require("../controller/ProfileManagment/GetFavouriteAdoptionPost");
+const getOrderDetails = require("../controller/ProfileManagment/getOrderDetails");
 const router = express.Router();
-
 router.get("/getProfilePicture/:id", getProfilePicture);
 router.get("/getNormalPostUser/:id", getNormalPostUser);
 router.get("/getAdoptionPost/:id", getAdoptionPost);
@@ -24,4 +24,5 @@ router.post(
   authenticate,
   changeAdoptionPostStatus
 );
+router.post("/getOrderHistory/:id", authenticate, getOrderDetails);
 module.exports = router;

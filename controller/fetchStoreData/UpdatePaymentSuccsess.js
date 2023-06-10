@@ -6,23 +6,29 @@ const UpdatePaymentSuccsess = async (req, res) => {
   const userId = req.userId;
   const orderId = req.orderId;
   let total = req.total;
-  total = Number(String(total).slice(0, -2));
-  if (!userId && !orderId && !total) {
-    res.status(400).json({ message: "Something Went Wrong!Please Try Again!" });
-  }
   const order = await OrderModel.findById(orderId);
   const user = await User.findById(userId);
+  total = Number(String(total).slice(0, -2));
+  if (!userId && !orderId && !total) {
+    return;
+  }
   if (total > user.BankAccount) {
-    return res.json({
-      message: "You don't have enough money to complete that payment !",
-    });
+    order.orderState = "";
+    order.totalPrice = 0;
+    order.save();
+    return;
   }
   order.orderState = "Confirmed";
   order.totalPrice = total;
   order.save();
-  user.userOrder[user.userOrder.length - 1] = order;
-  user.BankAccount = user.BankAccount - total;
-  console.log(user.BankAccount, total);
-  user.save();
+  const orderIndex = user.userOrder.findIndex((orderID) =>
+    orderID.equals(orderId)
+  );
+  if (orderIndex !== -1) {
+    user.userOrder[orderIndex] = order;
+    user.BankAccount = user.BankAccount - total;
+    user.save();
+  }
+  console.log(orderIndex, orderId);
 };
 module.exports = UpdatePaymentSuccsess;
