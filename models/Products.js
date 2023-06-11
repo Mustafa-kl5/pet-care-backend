@@ -1,4 +1,3 @@
-const { Int32 } = require("mongodb");
 const mongoose = require("mongoose");
 const image = require("../models/image");
 const ProductsSchema = new mongoose.Schema({

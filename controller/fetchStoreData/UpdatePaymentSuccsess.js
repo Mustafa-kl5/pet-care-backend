@@ -2,6 +2,8 @@ const User = require("../../models/user.js");
 const mongoose = require("mongoose");
 const Order = require("../../models/Order");
 const OrderModel = mongoose.model("Order", Order);
+const OrderHistory = require("../../models/OrderHistory.js");
+const OrderHistoryModel = mongoose.model("OrderHistory", OrderHistory);
 const UpdatePaymentSuccsess = async (req, res) => {
   const userId = req.userId;
   const orderId = req.orderId;
@@ -12,23 +14,19 @@ const UpdatePaymentSuccsess = async (req, res) => {
   if (!userId && !orderId && !total) {
     return;
   }
-  if (total > user.BankAccount) {
-    order.orderState = "";
-    order.totalPrice = 0;
-    order.save();
-    return;
-  }
-  order.orderState = "Confirmed";
   order.totalPrice = total;
+  order.orderState = "Confirmed";
+  await order.save();
+  const OrderHistory = new OrderHistoryModel();
+  OrderHistory.Order = order;
+  OrderHistory.userID = userId;
+  OrderHistory.save();
+  order.products = [];
+  order.totalPrice = 0;
+  order.orderState = "Pending";
   order.save();
-  const orderIndex = user.userOrder.findIndex((orderID) =>
-    orderID.equals(orderId)
-  );
-  if (orderIndex !== -1) {
-    user.userOrder[orderIndex] = order;
-    user.BankAccount = user.BankAccount - total;
-    user.save();
-  }
-  console.log(orderIndex, orderId);
+  user.userOrder = order;
+  user.save();
+  return res.json({ message: "Done!" });
 };
 module.exports = UpdatePaymentSuccsess;

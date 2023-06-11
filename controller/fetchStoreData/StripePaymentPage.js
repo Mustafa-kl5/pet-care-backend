@@ -21,11 +21,11 @@ const StripePaymentPage = async (req, res) => {
           price_data: {
             currency: "usd",
             product_data: {
-              name: item.productName,
+              name: item.Product.productName,
             },
-            unit_amount: item.productPrice * 100,
+            unit_amount: item.Product.productPrice * 100,
           },
-          quantity: item.productQuntity,
+          quantity: item.ProductQuantity,
         };
       }),
       success_url: "http://localhost:3000/Home",
