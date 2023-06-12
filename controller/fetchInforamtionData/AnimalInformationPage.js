@@ -6,7 +6,7 @@ const AnimalInformationPage = async (req, res) => {
   try {
     const { type, breed, typeID } = req.body;
     const animalType = await typeModel.findOne({ _id: typeID });
-    const animalData = await InformationAndTreatmentModel.find({
+    const animalData = await InformationAndTreatmentModel.findOne({
       animalType: type,
       animalBreed: breed,
     });
