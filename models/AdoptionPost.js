@@ -4,14 +4,10 @@ const location = require("./Location");
 const socialMedia = require("./SocialMedia");
 
 const adoptionPostSchema = new mongoose.Schema({
-  postID: {
-    type: mongoose.Schema.ObjectId,
-    default: () => new mongoose.Types.ObjectId(),
-  },
   Images: [postImages],
   postTime: {
     type: Date,
-    default: new Date(),
+    default: Date.now,
   },
   description: { type: String, required: true },
   postOwner: { type: String, required: true },
@@ -20,7 +16,13 @@ const adoptionPostSchema = new mongoose.Schema({
   animalType: { type: String, required: true },
   animalBreed: { type: String, required: true },
   animalName: { type: String, required: true },
-  status: { type: Boolean, required: true },
+  status: { type: Boolean, required: true, default: false },
+  City: { type: String, required: true },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  },
 });
 
-module.exports = adoptionPostSchema;
+module.exports = mongoose.model("adoption post", adoptionPostSchema);

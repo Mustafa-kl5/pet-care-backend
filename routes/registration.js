@@ -1,7 +1,7 @@
 const express = require("express");
 const {
   registrationController,
-} = require("../controller/registrationController.js");
+} = require("../controller/Auth/registrationController");
 const router = express.Router();
 
 router.post("/registration", registrationController);
