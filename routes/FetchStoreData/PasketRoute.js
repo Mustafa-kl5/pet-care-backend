@@ -5,7 +5,17 @@ const deleteProductsFromPasket = require("../../controller/fetchStoreData/delete
 const fetchProductsToPasket = require("../../controller/fetchStoreData/fetchProductsToPasket");
 const getCardInformation = require("../../controller/fetchStoreData/getCardInformation");
 const StripePaymentPage = require("../../controller/fetchStoreData/StripePaymentPage");
+
 route.get("/fetchProdcutsToPasket", authenticate, fetchProductsToPasket);
-route.delete("/deleteProductsFromPasket", deleteProductsFromPasket);
-route.post("/getCardInformation", getCardInformation, StripePaymentPage);
+route.delete(
+  "/deleteProductsFromPasket",
+  authenticate,
+  deleteProductsFromPasket
+);
+route.post(
+  "/getCardInformation",
+  authenticate,
+  getCardInformation,
+  StripePaymentPage
+);
 module.exports = route;

@@ -13,7 +13,7 @@ const getAllPost = async (req, res) => {
           _id: 1,
         }
       )
-      .populate("author", "userImage"); // Update the populate method
+      .populate("author", "userImage");
 
     const postToSend = [];
     posts.forEach((post) => {

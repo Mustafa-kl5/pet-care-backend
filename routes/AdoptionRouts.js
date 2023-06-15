@@ -8,13 +8,17 @@ const getFavouriteAdoptionPost = require("../controller/AdoptionPostControllers/
 const router = express.Router();
 
 router.post("/addAdoptionPost", authenticate, addAdoptionPost);
-router.get("/getAllAdoptionPosts", getAllAdoptionPost);
-router.get("/getAdoptionPostById/:id", getAdoptionPostById);
+router.get("/getAllAdoptionPosts", authenticate, getAllAdoptionPost);
+router.get("/getAdoptionPostById/:id", authenticate, getAdoptionPostById);
 router.post(
   "/addAdoptionToFavourite/:id",
   authenticate,
   addAdoptionToFavourite
 );
-router.get("/getFavouriteAdoptionPost/:id", getFavouriteAdoptionPost);
+router.get(
+  "/getFavouriteAdoptionPost/:id",
+  authenticate,
+  getFavouriteAdoptionPost
+);
 
 module.exports = router;

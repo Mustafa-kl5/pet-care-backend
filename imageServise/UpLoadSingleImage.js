@@ -11,7 +11,7 @@ const upLoadSingleImage = async (image, userName) => {
 
   try {
     await fs.promises.writeFile(filepath, base64Data, "base64");
-    const imageURL = `http://localhost:4111/${filepath}`; // modify the domain name as per your requirements
+    const imageURL = `http://localhost:4111/${filepath}`;
 
     return imageURL;
   } catch (error) {

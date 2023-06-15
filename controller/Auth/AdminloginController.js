@@ -3,18 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const AdminloginController = async (req, res) => {
   const { email, password } = req.body;
-  // -------------------------------------------
-  // const salt = bcrypt.genSaltSync(10);
-  // const hashedPassword = await bcrypt.hashSync(password, salt);
-  // const admin = await Admin.create({
-  //   firstName: firstName,
-  //   lastName: LastName,
-  //   email: email,
-  //   password: hashedPassword,
-  // });
-  // admin.save();
-  // res.json({ message: "Done" });
-  // --------------------------------------------
+
   try {
     const admin = await Admin.findOne({ email: email });
     if (!admin) {

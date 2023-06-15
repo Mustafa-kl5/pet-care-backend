@@ -6,7 +6,6 @@ const ProductData = async (req, res) => {
   try {
     const { ProductData } = req.body;
     const Images = await uploadImage(ProductData.Images, "ProductImages");
-    console.log(ProductData);
     const product = new ProductModel({
       animalType: ProductData.AnimalType,
       productName: ProductData.ProductName,

@@ -5,7 +5,6 @@ const TypeModel = mongoose.model("Type", Type);
 const AddAnimalType = async (req, res) => {
   try {
     const { animalTypeInformaion } = req.body;
- console.log ();
     const ConvertedImage = await uploadImage(
       animalTypeInformaion.Image,
       "BlogsImages"

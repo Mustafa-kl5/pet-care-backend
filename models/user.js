@@ -14,9 +14,7 @@ const userSchema = new mongoose.Schema({
   phoneNumber: { type: String },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  bio: { type: String },
   userOrder: Order,
-  // favouritePosts: [normalPost],
   favouriteAdoptionPosts: [String],
 });
 
