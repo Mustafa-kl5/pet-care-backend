@@ -1,6 +1,6 @@
 const Type = require("../../models/AnimalType");
 const mongoose = require("mongoose");
-const TypeHandler = async (req, res) => {
+const getTypes = async (req, res) => {
   const modelNames = mongoose.modelNames();
   const typeModels = modelNames
     .filter((modelName) => modelName.includes("Type"))
@@ -14,4 +14,4 @@ const TypeHandler = async (req, res) => {
   }
   res.json({ allModelsData });
 };
-module.exports = TypeHandler;
+module.exports = getTypes;

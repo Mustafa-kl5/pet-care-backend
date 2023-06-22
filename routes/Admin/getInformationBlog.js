@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const GetBlog = require("../../controller/Admin/Information&Treatment/BlogData");
+const addInformationBlog = require("../../controller/Admin/Information&Treatment/addInformationBlog");
 const getBlogRecords = require("../../controller/Admin/Information&Treatment/GetBlogRecords");
 const deleteBlogRecord = require("../../controller/Admin/Information&Treatment/DeleteBlogRecord");
-const getAnimalType = require("../../controller/Admin/Information&Treatment/AddAnimalType");
+const addAnimalType = require("../../controller/Admin/Information&Treatment/AddAnimalType");
 const getTypes = require("../../controller/Admin/Information&Treatment/getTypes");
-router.post("/getBlogData", GetBlog);
-router.get("/getTypes", getTypes);
-router.post("/getAnimalType", getAnimalType);
-router.get("/getBlogRecords", getBlogRecords);
+router.post("/getBlogData", addInformationBlog);
 router.delete("/deleteBlogRecord", deleteBlogRecord);
+router.get("/getBlogRecords", getBlogRecords);
+router.post("/getAnimalType", addAnimalType);
+router.get("/getTypes", getTypes);
+
 module.exports = router;

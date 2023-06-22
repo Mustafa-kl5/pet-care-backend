@@ -4,7 +4,7 @@ const location = require("../../../models/Location");
 const mongoose = require("mongoose");
 const locationModel = mongoose.model("location", location);
 
-const GetBlogData = async (req, res) => {
+const addInformationBlog = async (req, res) => {
   try {
     const { blogInformation } = req.body;
     const image = await uploadImage(blogInformation.Images, "BlogsImages");
@@ -31,4 +31,4 @@ const GetBlogData = async (req, res) => {
     });
   }
 };
-module.exports = GetBlogData;
+module.exports = addInformationBlog;

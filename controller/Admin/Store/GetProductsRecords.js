@@ -1,7 +1,7 @@
 const Product = require("../../../models/Products");
 const mongoose = require("mongoose");
 const ProductModel = mongoose.model("Product", Product);
-const GetProductRecords = async (req, res) => {
+const getProductsRecords = async (req, res) => {
   try {
     const Products = await ProductModel.find();
     res.json({ data: Products, message: "!Done" });
@@ -10,4 +10,4 @@ const GetProductRecords = async (req, res) => {
     res.json({ message: error });
   }
 };
-module.exports = GetProductRecords;
+module.exports = getProductsRecords;

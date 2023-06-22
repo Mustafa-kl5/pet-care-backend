@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const AnimalInformationData = require("../controller/fetchInforamtionData/AnimalInformationPage.js");
-const BreedHandler = require("../controller/fetchInforamtionData/BreedHandler");
-const TypeHandler = require("../controller/fetchInforamtionData/TypeHandler.js");
+const getAnimalInformationData = require("../controller/fetchInforamtionData/getAnimalInformationData.js");
+const getBreeds = require("../controller/fetchInforamtionData/getBreeds.js");
+const getTypes = require("../controller/fetchInforamtionData/getTypes.js");
 const authenticate = require("../controller/Auth/authenticate.js");
-router.get("/getType", authenticate, TypeHandler);
-router.post("/getBreed", authenticate, BreedHandler);
-router.post("/getAnimalInformation", authenticate, AnimalInformationData);
+router.get("/getType", authenticate, getTypes);
+router.post("/getBreed", authenticate, getBreeds);
+router.post("/getAnimalInformation", authenticate, getAnimalInformationData);
 module.exports = router;

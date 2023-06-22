@@ -2,7 +2,7 @@ const Products = require("../../../models/Products");
 const mongoose = require("mongoose");
 const uploadImage = require("../../../imageServise/ImageUpload.js");
 const ProductModel = mongoose.model("Product", Products);
-const ProductData = async (req, res) => {
+const addProduct = async (req, res) => {
   try {
     const { ProductData } = req.body;
     const Images = await uploadImage(ProductData.Images, "ProductImages");
@@ -22,4 +22,4 @@ const ProductData = async (req, res) => {
   }
 };
 
-module.exports = ProductData;
+module.exports = addProduct;

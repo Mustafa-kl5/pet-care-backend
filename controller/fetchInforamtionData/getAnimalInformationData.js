@@ -2,7 +2,7 @@ const InformationAndTreatmentModel = require("../../models/InformationAndTreatme
 const mongoose = require("mongoose");
 const Type = require("../../models/AnimalType");
 const typeModel = mongoose.model("Type", Type);
-const AnimalInformationPage = async (req, res) => {
+const getAnimalInformationData = async (req, res) => {
   try {
     const { type, breed, typeID } = req.body;
     const animalType = await typeModel.findOne({ _id: typeID });
@@ -15,4 +15,4 @@ const AnimalInformationPage = async (req, res) => {
     res.json(error);
   }
 };
-module.exports = AnimalInformationPage;
+module.exports = getAnimalInformationData;

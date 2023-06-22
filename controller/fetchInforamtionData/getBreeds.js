@@ -2,7 +2,7 @@ const InformationandTreatmentSchema = require("../../models/InformationAndTreatm
 const mongoose = require("mongoose");
 const Type = require("../../models/AnimalType");
 const typeModel = mongoose.model("Type", Type);
-const BreedHandler = async (req, res) => {
+const getBreeds = async (req, res) => {
   try {
     const { type, typeID } = req.body;
     const animalType = await typeModel.findOne({ _id: typeID });
@@ -16,4 +16,4 @@ const BreedHandler = async (req, res) => {
     res.send(error);
   }
 };
-module.exports = BreedHandler;
+module.exports = getBreeds;

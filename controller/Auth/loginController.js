@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 dotenv.config();
 
-const loginController = async (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
@@ -21,4 +21,4 @@ const loginController = async (req, res) => {
   });
   res.json({ token, auth: true });
 };
-module.exports = loginController;
+module.exports = login;

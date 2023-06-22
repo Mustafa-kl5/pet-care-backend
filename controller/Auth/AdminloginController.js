@@ -1,7 +1,7 @@
 const Admin = require("../../models/Admin");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const AdminloginController = async (req, res) => {
+const login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -30,4 +30,4 @@ const AdminloginController = async (req, res) => {
     res.json({ message: "Somthing went wrong" });
   }
 };
-module.exports = AdminloginController;
+module.exports = login;
