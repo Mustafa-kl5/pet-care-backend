@@ -19,7 +19,7 @@ const getAdoptionPostById = async (req, res) => {
 
     res.status(201).send(postWithAuthorImage);
   } catch (error) {
-    res.status(401).send("Error to add post");
+    res.status(401).send("Error to get post");
   }
 };
 module.exports = getAdoptionPostById;

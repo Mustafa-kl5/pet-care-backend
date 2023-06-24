@@ -1,5 +1,3 @@
-const postModle = require("../../models/AdoptionPost");
-const mongoose = require("mongoose");
 const userModel = require("../../models/user");
 const getFavouriteAdoptionPost = async (req, res) => {
   try {

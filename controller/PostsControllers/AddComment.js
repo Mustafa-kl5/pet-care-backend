@@ -17,7 +17,7 @@ const addComment = async (req, res) => {
     await post.save();
     res.status(201).send(post);
   } catch (error) {
-    res.status(401).json({ massage: "failed to get post" });
+    res.status(401).json({ massage: "failed to add comment to post" });
   }
 };
 module.exports = addComment;

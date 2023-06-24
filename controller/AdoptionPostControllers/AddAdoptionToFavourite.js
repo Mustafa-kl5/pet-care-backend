@@ -16,7 +16,7 @@ const addAdoptionToFavourite = async (req, res) => {
     await user.save();
     res.send(user);
   } catch (error) {
-    res.status(401).json({ massage: "failed to get post" });
+    res.status(401).json({ massage: "error to add post to favorites" });
   }
 };
 module.exports = addAdoptionToFavourite;
